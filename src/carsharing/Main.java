@@ -1,5 +1,7 @@
 package carsharing;
 
+import carsharing.presentation.Controller;
+
 import java.sql.SQLException;
 
 public class Main {
@@ -7,6 +9,7 @@ public class Main {
 
     /**
      * Main
+     *
      * @param args String[] - if args are given and first one is '-databaseFileName' the second one is database name
      */
     public static void main(String[] args) {
@@ -18,13 +21,12 @@ public class Main {
 
         try {
             Controller controller = new Controller(databaseName);
-            controller.run();
+            controller.run(false, false);
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-
 
 
     }

@@ -1,9 +1,4 @@
-Small project about matrix operations.
-User is presented a menu with following options: 
-1. Addition of matrixes
-2. Multiplying matrixes by a constant.
-3. Multiplying two matrixes.
-4. Transposing a matrix (via main diagonal, side diagonal, vertical line and horizontal line)
-5. Ability to calculate a determinant of a matrix.
-6. Inversion of a given matrix.
-Illegal operations (for example addition of two matrixes of different size) are signalled to user by exceptions. Result and inputs from users are taken from console.
+Project which allows running simplified car sharing company.
+Communication with user is handled by console input/output.
+There is possibility to add different companies and each company can have multiple cars to be rented. Database also possess information about users who can rent cars from company. When logged as a user there is possibility to rent a car, return rented car or check which car is rented by him.
+When logged as a manager there is option to create a new company, list all companies, create a car and see all cars from each company.

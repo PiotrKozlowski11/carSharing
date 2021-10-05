@@ -1,11 +1,11 @@
-package carsharing;
+package carsharing.persistence;
 
 import java.sql.*;
 
 /**
  * Class used to connect to h2 Database and handle queries
  */
-class H2DataBase {
+public class H2DataBase {
 
     //name of database driver
     private static final String JDBC_DRIVER = "org.h2.Driver";
@@ -15,12 +15,13 @@ class H2DataBase {
 
     /**
      * Constructor for establishing connection between database.
-     * @param URL Database URL
-     * @param USER Username
-     * @param PASS password
+     *
+     * @param URL        Database URL
+     * @param USER       Username
+     * @param PASS       password
      * @param autoCommit whether database should work in autocommit mode
      * @throws ClassNotFoundException Exception is thrown when driver is not found
-     * @throws SQLException Exception is thrown when connections cannot be established
+     * @throws SQLException           Exception is thrown when connections cannot be established
      */
     public H2DataBase(String URL, String USER, String PASS, boolean autoCommit)
             throws ClassNotFoundException, SQLException {
@@ -33,6 +34,7 @@ class H2DataBase {
 
     /**
      * Method used to execute queries which does not return any data
+     *
      * @param query Query in string form
      * @throws SQLException Exception is thrown when database access error occurs
      */
@@ -42,6 +44,7 @@ class H2DataBase {
 
     /**
      * Method used to execute queries which returns ResultSet
+     *
      * @param query Query in string form
      * @return ResultSet, never null
      * @throws SQLException Exception is thrown when database access error occurs
@@ -52,6 +55,7 @@ class H2DataBase {
 
     /**
      * Method used to close connection and statement to database
+     *
      * @throws SQLException Exception is thrown when database access error occurs
      */
     public void closeBase() throws SQLException {

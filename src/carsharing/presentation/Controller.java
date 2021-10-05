@@ -1,4 +1,9 @@
-package carsharing;
+package carsharing.presentation;
+
+import carsharing.business.Car;
+import carsharing.business.Company;
+import carsharing.business.Customer;
+import carsharing.persistence.DataAccess;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -40,43 +45,27 @@ public class Controller {
     /**
      * Main program loop
      */
-    public void run() {
+    public void run(boolean dropBase, boolean createBase) throws SQLException {
 
-        boolean dropBase = false;
         if (dropBase) {
-            try {
+
 
                 dataAccess.dropTableCustomer();
                 dataAccess.dropTableCar();
                 dataAccess.dropTableCompany();
 
 
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+
         }
 
-        boolean createBase = false;
         if (createBase) {
-            try {
+
                 dataAccess.createTableCompany();
                 dataAccess.createTableCar();
                 dataAccess.createTableCustomer();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+
 
         }
-
-        /*
-        try {
-
-            dataAccess.restartAutoIncrement();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-         */
 
 
         while (true) {
@@ -117,6 +106,7 @@ public class Controller {
 
     /**
      * Ask user to enter company name
+     *
      * @return String - company name
      */
     private String getCompanyName() {
@@ -127,6 +117,7 @@ public class Controller {
 
     /**
      * Ask user to enter car name
+     *
      * @return String - car name
      */
     private String getCarName() {
@@ -137,6 +128,7 @@ public class Controller {
 
     /**
      * Ask user to enter customer name
+     *
      * @return String - customer name
      */
     private String getCustomerName() {
@@ -182,6 +174,7 @@ public class Controller {
      * Method to handle menu when manager is logged -> submenu to display all cars of selected company,
      * create a Car of selected company
      * or go back to previous submenu
+     *
      * @param selectedCompany int - selected company by manager
      */
     private void handleMenuManagerChooseCar(int selectedCompany) {
@@ -193,12 +186,6 @@ public class Controller {
                         if (listCar.size() == 0) {
                             System.out.println("The car list is empty!");
                         } else {
-                            /*
-                            for (int i = 0; i < listCar.size(); i++) {
-                                System.out.println((i + 1) + ". " + listCar.get(i).getName());
-                            }
-
-                             */
                             IntStream.range(0, listCar.size())
                                     .forEach(i -> System.out.println((i + 1) + ". " + listCar.get(i).getName()));
                         }
@@ -226,6 +213,7 @@ public class Controller {
     /**
      * Method to check if there are any companies in database.
      * If there are companies add them to menuCompany and add Back option
+     *
      * @return boolean - true if there are companies in database, false if there are not any
      */
     private boolean menuCompanyList() {
@@ -314,6 +302,7 @@ public class Controller {
      * Else ask user for company ID and car ID to be rented.
      * 2 -  Return rented car. If no car is rented displays relevant message.
      * 3 - Display info about rented car and car's company. If no car is rented display relevant message.
+     *
      * @param customerID int - ID of selected customer
      * @throws SQLException Exception is thrown when connections cannot be established
      */
@@ -368,7 +357,8 @@ public class Controller {
      * Submenu when user is logged as a customer - user is selecting car to be rented by him.
      * Valid options are consecutive numbers
      * Selecting 0 moves to previous menu.
-     * @param companyID int - ID of a company
+     *
+     * @param companyID  int - ID of a company
      * @param customerID int - ID of a customer
      */
     private void menuChooseCarCustomer(int companyID, int customerID) {

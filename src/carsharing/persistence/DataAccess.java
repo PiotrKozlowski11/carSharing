@@ -1,4 +1,8 @@
-package carsharing;
+package carsharing.persistence;
+
+import carsharing.business.Car;
+import carsharing.business.Company;
+import carsharing.business.Customer;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,8 +26,9 @@ public class DataAccess {
 
     /**
      * Constructor used to establish connection with database and create h2database object
+     *
      * @param dataBaseName String name of database
-     * @throws SQLException Thrown by h2DataBase. Exception is thrown when connections cannot be established
+     * @throws SQLException           Thrown by h2DataBase. Exception is thrown when connections cannot be established
      * @throws ClassNotFoundException Thrown by h2DataBase. Exception is thrown when driver is not found
      */
     public DataAccess(String dataBaseName) throws SQLException, ClassNotFoundException {
@@ -35,22 +40,27 @@ public class DataAccess {
 
     /**
      * Method to Create Company Table
+     *
      * @throws SQLException Exception is thrown when database access error occurs
      */
     public void createTableCompany() throws SQLException {
         h2DataBase.executeStatement(Queries.createTableCompany);
 
     }
+
     /**
      * Method to Create Car Table
+     *
      * @throws SQLException Exception is thrown when database access error occurs
      */
     public void createTableCar() throws SQLException {
         h2DataBase.executeStatement(Queries.createTableCar);
         h2DataBase.executeStatement(Queries.TableCarAddForeignKey);
     }
+
     /**
      * Method to Create Customer Table
+     *
      * @throws SQLException Exception is thrown when database access error occurs
      */
     public void createTableCustomer() throws SQLException {
@@ -60,6 +70,7 @@ public class DataAccess {
 
     /**
      * Method to Drop Company Table
+     *
      * @throws SQLException Exception is thrown when database access error occurs
      */
     public void dropTableCompany() throws SQLException {
@@ -68,13 +79,16 @@ public class DataAccess {
 
     /**
      * Method to Drop Car Table
+     *
      * @throws SQLException Exception is thrown when database access error occurs
      */
     public void dropTableCar() throws SQLException {
         h2DataBase.executeStatement(Queries.dropTableCar);
     }
+
     /**
      * Method to Drop Customer Table
+     *
      * @throws SQLException Exception is thrown when database access error occurs
      */
     public void dropTableCustomer() throws SQLException {
@@ -83,6 +97,7 @@ public class DataAccess {
 
     /**
      * Method to restart incrementing from 1 in company and car tables
+     *
      * @throws SQLException Exception is thrown when database access error occurs
      */
     public void restartAutoIncrement() throws SQLException {
@@ -92,6 +107,7 @@ public class DataAccess {
 
     /**
      * Add new company to database
+     *
      * @param companyName String - Name of a new company
      * @throws SQLException Exception is thrown when database access error occurs
      */
@@ -101,6 +117,7 @@ public class DataAccess {
 
     /**
      * Get company from database by it ID number.
+     *
      * @param companyID int - This is company's id number
      * @return Company object
      * @throws SQLException Exception is thrown when database access error occurs
@@ -115,6 +132,7 @@ public class DataAccess {
 
     /**
      * Get all companies from database
+     *
      * @return List<Company>
      * @throws SQLException Exception is thrown when database access error occurs
      */
@@ -134,7 +152,8 @@ public class DataAccess {
 
     /**
      * Add new car to database
-     * @param carName String - new Car name
+     *
+     * @param carName   String - new Car name
      * @param companyID int - company ID of a car
      * @throws SQLException Exception is thrown when database access error occurs
      */
@@ -144,6 +163,7 @@ public class DataAccess {
 
     /**
      * Get company from database by it ID number.
+     *
      * @param carID int - This is car's id number
      * @return Car object
      * @throws SQLException Exception is thrown when database access error occurs
@@ -159,6 +179,7 @@ public class DataAccess {
 
     /**
      * Get all not rented cars by selected company ID
+     *
      * @param companyID int - ID of selected company
      * @return List<Car>
      * @throws SQLException Exception is thrown when database access error occurs
@@ -179,6 +200,7 @@ public class DataAccess {
 
     /**
      * Get all cars by selected company ID
+     *
      * @param companyID int - ID of selected company
      * @return List<Car>
      * @throws SQLException Exception is thrown when database access error occurs
@@ -198,6 +220,7 @@ public class DataAccess {
 
     /**
      * Add new customer to database. Sets id of rented car to "NULL"
+     *
      * @param customerName String - new Car name
      * @throws SQLException Exception is thrown when database access error occurs
      */
@@ -207,6 +230,7 @@ public class DataAccess {
 
     /**
      * Get customer from database by it ID
+     *
      * @param customerID int - Customer's id
      * @return Customer object
      * @throws SQLException Exception is thrown when database access error occurs
@@ -223,6 +247,7 @@ public class DataAccess {
 
     /**
      * Get all customers from database
+     *
      * @return List of Customers
      * @throws SQLException Exception is thrown when database access error occurs
      */
@@ -240,8 +265,9 @@ public class DataAccess {
     }
 
     /**
-     * Update customer table - allows renting car (by its ID) by specific customer(by it's ID)
-     * @param carID int - id of a car which will be rented
+     * Update customer table - allows renting car (by its ID) by specific customer(by its ID)
+     *
+     * @param carID      int - id of a car which will be rented
      * @param customerID int - id of a customer who is renting a car
      * @throws SQLException Exception is thrown when database access error occurs
      */
@@ -252,6 +278,7 @@ public class DataAccess {
 
     /**
      * Update customer table - return rented car by setting rented_car_id to null
+     *
      * @param customerID int - id of a customer
      * @throws SQLException Exception is thrown when database access error occurs
      */
@@ -261,6 +288,7 @@ public class DataAccess {
 
     /**
      * closing h2database
+     *
      * @throws SQLException Exception is thrown when database access error occurs
      */
     public void closeBase() throws SQLException {

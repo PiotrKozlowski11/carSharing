@@ -1,4 +1,4 @@
-package carsharing;
+package carsharing.presentation;
 
 import java.util.Comparator;
 import java.util.LinkedHashMap;
@@ -24,8 +24,9 @@ class Menu {
 
     /**
      * Method to add another option to menu.
+     *
      * @param integer It will be used to accept user input from console
-     * @param string It will be used to display message which is preceded by Number
+     * @param string  It will be used to display message which is preceded by Number
      */
     public void putItemList(Integer integer, String string) {
         itemList.put(integer, string);
@@ -33,6 +34,7 @@ class Menu {
 
     /**
      * Method used to generate Menu options as a String
+     *
      * @return String which can be used later to print a message to user
      */
     private String generateText() {
@@ -46,6 +48,7 @@ class Menu {
      * Method used to handle display options and handle user input.
      * Displayed numbers and messages are taken from itemList parameter.
      * Invalid inputs such as strings and doubles are ignored.
+     *
      * @return Method returns number which was earlier put by 'putItemList'
      */
     public int getChoice() {

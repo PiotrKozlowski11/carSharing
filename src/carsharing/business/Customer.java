@@ -1,4 +1,4 @@
-package carsharing;
+package carsharing.business;
 
 /**
  * Class which represents Customer
@@ -13,8 +13,9 @@ public class Customer {
 
     /**
      * Simple constructor with all the required parameters
-     * @param id customer ID
-     * @param name customer Name
+     *
+     * @param id          customer ID
+     * @param name        customer Name
      * @param rentedCarId ID of customer's rented car
      */
     public Customer(int id, String name, Integer rentedCarId) {
@@ -36,7 +37,6 @@ public class Customer {
     }
 
     /**
-     *
      * @return String with all class parameters
      */
     @Override
